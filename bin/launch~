@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Running String Analyzer"
+ruby ./lib/Main.rb
+exit

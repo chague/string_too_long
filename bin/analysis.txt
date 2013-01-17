@@ -1,0 +1,8 @@
+String Size: 3, Max Size: 13, String: hi
+
+String Size: 9, Max Size: 13, String: here are
+
+String Size: 12, Max Size: 13, String: some string
+
+String Size: 53, Max Size: 13, String: lets see if any of these could possibly be too long?
+ !String too long!
