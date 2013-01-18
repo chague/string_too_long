@@ -1,4 +1,4 @@
-require_relative "StringTooLongException"
+require_relative "StringTooLongExceptions"
 
 class StringAnalyzer
   def analyzeStrings(strings, lLimit)
@@ -8,7 +8,7 @@ class StringAnalyzer
       begin
         raise StringTooLongException if c.size > lLimit
       rescue
-        temp += " !String too long!"
+        temp += ", !String too long!"
       end
       retStrings << temp
     end
