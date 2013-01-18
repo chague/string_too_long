@@ -1,3 +1,4 @@
+require "csv"
 
 class AnalysisWriter
 
@@ -12,13 +13,15 @@ class AnalysisWriter
 
   def writeFile
     begin
-      File.open(@@FILE, @@FILE_OPTION_WRITE) do |f|
-        for s in @strings
-          f.write(s + "\n")
+      CSV.open(@@FILE, @@FILE_OPTION_WRITE) do |f|
+        for line in @strings
+          for sing in line
+            f << sing
+          end
         end
       end
     rescue
-      File.new(@@FILE, @@FILE_OPTION_WRITE)
+      CSV.new(@@FILE, @@FILE_OPTION_WRITE)
       retry
     end
   end
