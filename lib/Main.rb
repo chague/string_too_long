@@ -24,11 +24,26 @@ class Main
   def analyze(limit)
     ana = StringAnalyzer.new
     @retStrings = ana.analyzeStrings(@allInputs, limit)
-    @retStrings.each {|c| puts c}
-    wrt = AnalysisWriter.new(@retStrings)
+    timeStamp = Time.now.getutc.to_s
+    wrt = AnalysisWriter.new(@retStrings, ("../bin/output_reports/"+timeStamp+"/"))
     wrt.writeFile
-    puts "A file containing the analysis has been placed here: "
-    puts File.expand_path("../bin/analysis.txt")
+    printAnalysis(@retStrings)
+    puts "\nFiles containing the analysis has been placed here: "
+    puts File.expand_path("../bin/output_reports/#{timeStamp}")
+  end
+  
+  def printAnalysis(strings)
+    invalids = Array.new
+    for s in strings
+      inputs = s.split(", ")
+      if(inputs[3] != nil)
+        invalids << inputs
+      end
+    end
+    puts "Out of #{strings.size} strings, #{invalids.size} were invalid: "
+    for i in invalids
+      puts "- #{i[2]}"
+    end
   end
   
   
